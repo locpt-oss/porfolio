@@ -1,8 +1,20 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
+import Layout from '../layouts/default'
+import { NextPage } from 'next'
+import { ReactElement, ReactNode } from 'react'
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+type NextPageWithLayout = NextPage & {
+    getLayout?: (page: ReactElement) => ReactNode
 }
 
-export default MyApp
+type AppPropsWithLayout = AppProps & {
+    Component: NextPageWithLayout
+}
+
+function RootApp({ Component, pageProps }: AppPropsWithLayout) {
+    const getLayout = Component.getLayout ?? ((page) => <Layout>{page}</Layout>) // Nullish coalescing operator (??)
+    return getLayout(<Component {...pageProps} />)
+}
+
+export default RootApp
