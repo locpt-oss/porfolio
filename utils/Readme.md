@@ -1,1 +1,1 @@
-<!-- Folder for support tools for application -->
+Folder for support tools for application -->

@@ -1,1 +1,1 @@
-<!-- Folder for third party libraries -->
+Folder for third party libraries
