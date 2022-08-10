@@ -38,3 +38,6 @@ next-env.d.ts
 # Prettierrc
 .prettierrc
 .prettierignore
+
+# Package dependencies
+package-lock.json
