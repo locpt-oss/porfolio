@@ -13,10 +13,10 @@ const Layout: React.FC<ChildrenElement> = ({
         // Short term for React.Fragment
         <>
             <Head>
-                <title>Victor Phan | Product Designer</title>
+                <title>Victor Phan: Product Designer</title>
                 <meta
                     name="description"
-                    content="Phan Thành Lộc - Product Designer"
+                    content="Phan Thành Lộc: Product Designer"
                 />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
