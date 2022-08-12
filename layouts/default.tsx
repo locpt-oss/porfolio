@@ -1,7 +1,7 @@
-import Head from 'next/head'
 import { ReactElement } from 'react'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
+import TheHead from '../components/TheHead'
 
 interface ChildrenElement {
     children: ReactElement
@@ -12,14 +12,7 @@ const Layout: React.FC<ChildrenElement> = ({
     return (
         // Short term for React.Fragment
         <>
-            <Head>
-                <title>Victor Phan: Product Designer</title>
-                <meta
-                    name="description"
-                    content="Phan Thành Lộc: Product Designer"
-                />
-                <link rel="icon" href="/favicon.ico" />
-            </Head>
+            <TheHead />
             <Navbar />
             <main>{children}</main>
             <Footer />

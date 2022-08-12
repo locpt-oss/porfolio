@@ -1,6 +1,7 @@
 import { NextPage } from 'next/types'
 import { ReactElement, ReactNode } from 'react'
 import Footer from '../../components/Footer'
+import TheHead from '../../components/TheHead'
 
 type Props = {}
 
@@ -15,6 +16,7 @@ const AboutPage: AboutPageWithLayout = (props: Props): ReactElement => {
 AboutPage.getLayout = (page: ReactElement) => {
     return (
         <>
+            <TheHead />
             <>{page}</>
             <Footer />
         </>
