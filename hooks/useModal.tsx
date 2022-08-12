@@ -5,7 +5,13 @@ interface ModalProviderProps {
     children: React.ReactNode
 }
 export const ModalProvider = ({ children }: ModalProviderProps) => {
-    return <ModalContext.Provider value={}>{children}</ModalContext.Provider>
+    const modalProviderData = {}
+
+    return (
+        <ModalContext.Provider value={modalProviderData}>
+            {children}
+        </ModalContext.Provider>
+    )
 }
 
 export default function useModal() {

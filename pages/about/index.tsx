@@ -17,7 +17,7 @@ AboutPage.getLayout = (page: ReactElement) => {
     return (
         <>
             <TheHead />
-            <>{page}</>
+            <main>{page}</main>
             <Footer />
         </>
     )

@@ -15,9 +15,9 @@ type AppPropsWithLayout = AppProps & {
 
 function RootApp({ Component, pageProps }: AppPropsWithLayout) {
     const getLayout = Component.getLayout ?? ((page) => <Layout>{page}</Layout>) // Nullish coalescing operator (??)
-    return getLayout(
+    return (
         <ChakraProvider>
-            <Component {...pageProps} />
+            {getLayout(<Component {...pageProps} />)}
         </ChakraProvider>
     )
 }
