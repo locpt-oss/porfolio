@@ -1,15 +1,21 @@
-import { createContext, useContext } from 'react'
+import { createContext, useContext, useState } from 'react'
+
 interface IModal {}
+
 const ModalContext = createContext<IModal>({})
-interface ModalProviderProps {
+interface IModalProviderProps {
     children: React.ReactNode
 }
-export const ModalProvider = ({ children }: ModalProviderProps) => {
+
+export const ModalProvider = ({ children }: IModalProviderProps) => {
+    const [modalContent, setModalContent] = useState(null)
+
     const modalProviderData = {}
 
     return (
         <ModalContext.Provider value={modalProviderData}>
             {children}
+            {modalContent}
         </ModalContext.Provider>
     )
 }
