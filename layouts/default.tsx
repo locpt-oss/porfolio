@@ -10,7 +10,6 @@ const Layout: React.FC<ChildrenElement> = ({
     children,
 }: ChildrenElement): ReactElement => {
     return (
-        // Short term for React.Fragment
         <>
             <TheHead />
             <Navbar />
