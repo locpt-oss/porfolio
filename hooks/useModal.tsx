@@ -1,5 +1,11 @@
 import { motion } from 'framer-motion'
-import { createContext, ReactNode, useContext, useState } from 'react'
+import {
+    createContext,
+    ReactNode,
+    useCallback,
+    useContext,
+    useState,
+} from 'react'
 
 interface IModalContext {
     openModal: () => void
@@ -22,8 +28,10 @@ export const ModalProvider = ({ children }: IModalProviderProps) => {
 
     const openModal = () => setOpen(true)
     const closeModal = () => setOpen(false)
-    const setModalContent = (modalContent: ReactNode) =>
-        setModalComponent(modalContent)
+    const setModalContent = useCallback(
+        (modalContent: ReactNode) => setModalComponent(modalContent),
+        [setModalComponent]
+    )
 
     const modalProviderData = { openModal, closeModal, setModalContent }
 
@@ -31,13 +39,8 @@ export const ModalProvider = ({ children }: IModalProviderProps) => {
         <ModalContext.Provider value={modalProviderData}>
             {children}
             {open ? (
-                <Backdrop onClick={() => null}>
-                    <BaseModal handleCloseModal={() => null}>
-                        <div className="tw-bg-white tw-w-full tw-h-full">
-                            <h1 className="tw-text-red-500">Hello World</h1>
-                            <button onClick={closeModal}>Close Modal</button>
-                        </div>
-                    </BaseModal>
+                <Backdrop onClick={closeModal}>
+                    <BaseModal>{modalComponent}</BaseModal>
                 </Backdrop>
             ) : (
                 <></>
@@ -45,7 +48,6 @@ export const ModalProvider = ({ children }: IModalProviderProps) => {
         </ModalContext.Provider>
     )
 }
-// TODO: Need to improve performance of motion and passing real custom Modal and testing event
 interface IBackdrop {
     children: ReactNode
     onClick: () => void
@@ -57,7 +59,7 @@ const Backdrop = ({ children, onClick }: IBackdrop) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            onClick={() => onClick}
+            onClick={onClick}
         >
             {children}
         </motion.div>
@@ -66,7 +68,6 @@ const Backdrop = ({ children, onClick }: IBackdrop) => {
 
 interface IBaseModal {
     children: ReactNode
-    handleCloseModal: () => void
 }
 
 const dropIn = {
@@ -86,7 +87,7 @@ const dropIn = {
     },
     exit: { y: '100vh', opacity: 0 },
 }
-const BaseModal = ({ children, handleCloseModal }: IBaseModal) => {
+const BaseModal = ({ children }: IBaseModal) => {
     return (
         <motion.div
             className="modal"
