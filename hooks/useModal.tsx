@@ -33,6 +33,7 @@ export const ModalProvider = ({ children }: IModalProviderProps) => {
     )
 }
 
+// TODO: Create BaseModal to wrap modal children instead of using modalComponent(Third party UI Lib) to make code much more cleaner
 export default function useModal() {
     return useContext(ModalContext)
 }
