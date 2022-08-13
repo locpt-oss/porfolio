@@ -1,7 +1,7 @@
 type Props = {}
 
 const Navbar = (props: Props) => {
-    return <div>Navbar</div>
+    return <nav>Navbar</nav>
 }
 
 export default Navbar
