@@ -1,7 +1,6 @@
 import { Button } from '@chakra-ui/button'
 import { NextPage } from 'next/types'
 import { ReactElement, ReactNode } from 'react'
-import BaseModal from '../../components/BaseModal'
 import Footer from '../../components/Footer'
 import TheHead from '../../components/TheHead'
 import useModal from '../../hooks/useModal'
@@ -14,9 +13,7 @@ type AboutPageWithLayout = NextPage<Props> & {
 
 const AboutPage: AboutPageWithLayout = (props: Props): ReactElement => {
     const { openModal, closeModal, setModalContent } = useModal()
-    const handleOpen = () => {
-        setModalContent(<BaseModal isOpen={true} onClose={() => {}} />)
-    }
+    const handleOpen = () => openModal()
     return (
         <>
             <Button onClick={handleOpen}>Open Modal</Button>
