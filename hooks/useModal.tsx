@@ -38,12 +38,10 @@ export const ModalProvider = ({ children }: IModalProviderProps) => {
     return (
         <ModalContext.Provider value={modalProviderData}>
             {children}
-            {open ? (
+            {open && (
                 <Backdrop onClick={closeModal}>
                     <BaseModal>{modalComponent}</BaseModal>
                 </Backdrop>
-            ) : (
-                <></>
             )}
         </ModalContext.Provider>
     )
